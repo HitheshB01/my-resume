@@ -7,9 +7,9 @@ import FormPractise from './components/FormPractise'
 const App = () => {
   return (
     <div>
-    {/* <FormPractise/> */}
+    {/* <FormPractise/>
       <ResumeForm/>
-      <Resume/>
+      <Resume/> */}
       <FreshersResume/>
     </div>
   )

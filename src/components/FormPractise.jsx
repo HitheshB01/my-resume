@@ -26,7 +26,15 @@ const FormPractise = () => {
   const [gitHub, setGitHub] = useState("");
   const [objective, setObjective] = useState("");
 
-  const [project,setProject]=useState([])
+  const [project, setProject] = useState([]);
+  const addProject = () => {
+    const newp = { panme: "1st proj", pdesp: "proj descpription" };
+    setProject([...project,newp]);
+  };
+
+  const [projectTitle, setProjectTitle] = useState("");
+  const [projectDescp, setProjectDescp] = useState("");
+
 
   const ResumeForm = () => {
     const AllData = {
@@ -36,8 +44,10 @@ const FormPractise = () => {
       linkedIn: linkedIn,
       gitHub: gitHub,
       objective: objective,
+      projectTitle:projectTitle,
+      projectDescp:projectDescp
     };
-    SetFormData(AllData)
+    SetFormData(AllData);
   };
 
   return (
@@ -60,11 +70,9 @@ const FormPractise = () => {
             Email
           </label>
           <input
-           
             type="email"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             onChange={(e) => setEmail(e.target.value)}
-          
           />
         </div>
 
@@ -73,8 +81,7 @@ const FormPractise = () => {
             Phone Number
           </label>
           <input
-                       onChange={(e) => setPhno(e.target.value)}
-
+            onChange={(e) => setPhno(e.target.value)}
             type="tel"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
@@ -88,8 +95,7 @@ const FormPractise = () => {
             type="url"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             onChange={(e) => setLinkedIn(e.target.value)}
-
-         />
+          />
         </div>
 
         <div className="mb-6">
@@ -99,7 +105,6 @@ const FormPractise = () => {
           <input
             type="url"
             onChange={(e) => setGitHub(e.target.value)}
-
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
@@ -108,14 +113,19 @@ const FormPractise = () => {
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Objective
           </label>
-          <textarea            onChange={(e) => setObjective(e.target.value)}
- className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+          <textarea
+            onChange={(e) => setObjective(e.target.value)}
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          ></textarea>
         </div>
-        <div className="mb-6">
+        {/* <div className="mb-6">
           <h2 className="text-xl font-bold mb-2">Projects</h2>
           {formData.projects.map((proj, index) => (
             <div key={index} className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor={`title-${index}`}>
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor={`title-${index}`}
+              >
                 Project Title
               </label>
               <input
@@ -126,7 +136,10 @@ const FormPractise = () => {
                 value={proj.title}
                 onChange={(e) => handleProjectChange(index, e)}
               />
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor={`description-${index}`}>
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor={`description-${index}`}
+              >
                 Description
               </label>
               <textarea
@@ -145,7 +158,7 @@ const FormPractise = () => {
           >
             Add Project
           </button>
-        </div>
+        </div> */}
 
         {/* <div className="mb-6">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="technicalSkills">
@@ -173,29 +186,28 @@ const FormPractise = () => {
           ></textarea>
         </div> */}
 
-        
-<div className="mb-6">
+        <div className="mb-6">
           <h2 className="text-xl font-bold mb-2">Projects</h2>
           {/* {formData.projects.map((proj, index) => ( */}
-            <div  className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor={`title-${index}`}>
-                Project Title
-              </label>
-              <input
-               
-                type="text"
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                onChange={(e) => handleProjectChange(index, e)}
-              />
-              <label className="block text-gray-700 text-sm font-bold mb-2" >
-                Description
-              </label>
-              <textarea
-               
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                onChange={(e) => handleProjectChange(index, e)}
-              ></textarea>
-            </div>
+          {project.map((item,i) => {
+            return (
+              <div key={i} className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Project Title
+                </label>
+                <input
+                  type="text"             onChange={(e) => setProjectTitle(e.target.value)}
+
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Description
+                </label>
+                <textarea  onChange={(e) => setProjectDescp(e.target.value)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+              </div>
+            );
+          })}
+
           {/* ))} */}
           <button
             type="button"
